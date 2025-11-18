@@ -12,5 +12,8 @@
     <h2 th:text="${todo.title}"></h2>
     <h4 th:text="${todo.content}"></h4>
     <p th:text="${todo.completed ? '완료' : '미완료'}"></p>
+
+    <hr>
+    <a th:href="@{/todos/{id}/delete(id=${todo.id})}">delete</a>
 </body>
 </html>
