@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>edit</title>
+</head>
+<body>
+    <h1>edit</h1>
+
+    <form th:action="@{/todos/{id}/update(id=${todo.id})}">
+        <input type="text" name="title" th:value="${todo.title}">
+        <input type="text" name="content" th:value="${todo.content}">
+        <input type="checkbox" name="completed" value="true" th:checked="${todo.completed}">
+        <input type="submit">
+    </form>
+</body>
+</html>
