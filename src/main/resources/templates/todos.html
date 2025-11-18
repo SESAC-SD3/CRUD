@@ -9,7 +9,11 @@
     <a href="/todos/new">new</a>
     <hr>
 
-    <h3 th:each="todo : ${todos}" th:text="${todo.getTitle()}"></h3>
+<!--    <h3 th:each="todo : ${todos}" th:text="${todo.getTitle()}"></h3>-->
+    <div th:each="todo : ${todos}">
+        <h3 th:text="${todo.getTitle()}"></h3>
+        <a th:href="@{/todos/{id}(id=${todo.getId()})}">detail</a>
+    </div>
 
 </body>
 </html>

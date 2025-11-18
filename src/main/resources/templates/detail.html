@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+</head>
+<body>
+    <h1>DETAIL</h1>
+    <a href="/todos">home</a>
+
+<!--    <h2 th:text="${todo.getTitle()}"></h2>-->
+    <h2 th:text="${todo.title}"></h2>
+    <h4 th:text="${todo.content}"></h4>
+    <p th:text="${todo.completed ? '완료' : '미완료'}"></p>
+</body>
+</html>
