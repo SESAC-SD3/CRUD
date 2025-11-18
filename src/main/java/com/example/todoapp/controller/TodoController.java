@@ -12,7 +12,13 @@ import java.util.List;
 
 @Controller
 public class TodoController {
-    private final TodoRepository todoRepository = new TodoRepository();
+//    private final TodoRepository todoRepository = new TodoRepository();
+    private final TodoRepository todoRepository;
+
+
+    public TodoController(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
 
     @GetMapping("/todos")
     public String todos(Model model){
