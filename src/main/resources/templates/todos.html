@@ -6,7 +6,13 @@
 </head>
 <body>
     <h1>할일목록</h1>
+    <a href="/todos">home</a>
     <a href="/todos/new">new</a>
+
+    <form action="/todos/search">
+        <input type="text" name="keyword">
+        <input type="submit">
+    </form>
     <hr>
 
 <!--    <h3 th:each="todo : ${todos}" th:text="${todo.getTitle()}"></h3>-->
