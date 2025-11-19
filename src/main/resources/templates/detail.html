@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>detail</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}"
+>
+
+<div layout:fragment="content">
+
     <h1>DETAIL</h1>
     <a href="/todos">home</a>
 
@@ -16,5 +17,4 @@
     <hr>
     <a th:href="@{/todos/{id}/edit(id=${todo.id})}">edit</a>
     <a th:href="@{/todos/{id}/delete(id=${todo.id})}">delete</a>
-</body>
-</html>
+</div>

@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>new</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}"
+>
+<div layout:fragment="content">
+
     <h1>NEW</h1>
     <form action="/todos/create">
         <input type="text" name="title">
         <input type="text" name="content">
         <input type="submit">
     </form>
-</body>
-</html>
+</div>
