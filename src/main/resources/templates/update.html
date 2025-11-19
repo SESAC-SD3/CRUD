@@ -6,7 +6,7 @@
 
 <div layout:fragment="content">
 
-    <form th:action="@{/todos/{id}/update(id=${todo.id})}">
+    <form th:action="@{/todos/{id}/update(id=${todo.id})}" method="post">
         <label for="title" class="form-label"></label>
         <input type="text" name="title" th:value="${todo.title}" id="title" class="form-control">
         <label for="content" class="form-label"></label>
