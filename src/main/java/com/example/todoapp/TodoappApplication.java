@@ -19,7 +19,7 @@ public class TodoappApplication {
         return args -> {
 //            TodoRepository todoRepository = new TodoRepository();
             todoRepository.save(new TodoDto(null, "study", "JAVA", false));
-            todoRepository.save(new TodoDto(null, "cook", "kimbob", false));
+            todoRepository.save(new TodoDto(null, "cook", "kimbob", true));
             todoRepository.save(new TodoDto(null, "workout", "run", false));
 
         };
