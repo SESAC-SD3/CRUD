@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>create</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}"
+>
+<div layout:fragment="content">
     <h1>create</h1>
-
     <h1 th:text="${todo.getTitle()}"></h1>
     <h1 th:text="${todo.getContent()}"></h1>
-</body>
-</html>
+</div>
