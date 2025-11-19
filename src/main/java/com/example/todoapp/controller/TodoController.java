@@ -5,6 +5,7 @@ import com.example.todoapp.repository.TodoRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class TodoController {
     public String create(
             @RequestParam String title,
             @RequestParam String content,
+            RedirectAttributes redirectAttributes,
             Model model
     ){
         TodoDto todoDto = new TodoDto(null, title, content, false);
@@ -45,6 +47,7 @@ public class TodoController {
 
         TodoDto todo = todoRepository.save(todoDto);
         model.addAttribute("todo", todo);
+        redirectAttributes.addFlashAttribute("message", "할 일이 생성되었습니다.");
 
 //        return "create";
         return "redirect:/todos";
@@ -67,9 +70,14 @@ public class TodoController {
     }
 
     @GetMapping("/{id}/delete")
-    public String delete(@PathVariable Long id, Model model) {
+    public String delete(
+            @PathVariable Long id,
+            RedirectAttributes redirectAttributes,
+            Model model) {
         // 삭제로직
         todoRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "할일이 삭제되었습니다.");
+        redirectAttributes.addFlashAttribute("status", "delete");
         return "redirect:/todos";
     }
 
@@ -91,6 +99,7 @@ public class TodoController {
             @RequestParam String title,
             @RequestParam String content,
             @RequestParam(defaultValue = "false") Boolean completed,
+            RedirectAttributes redirectAttributes,
             Model model) {
 
         try {
@@ -102,9 +111,11 @@ public class TodoController {
             todo.setCompleted(completed);
 
             todoRepository.save(todo);
+            redirectAttributes.addFlashAttribute("message", "할 일이 수정되었습니다.");
 
             return "redirect:/todos/" + id;
         } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("message", "없는 할일입니다.");
             return "redirect:/todos";
         }
 
