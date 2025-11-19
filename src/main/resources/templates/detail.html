@@ -6,15 +6,18 @@
 
 <div layout:fragment="content">
 
-    <h1>DETAIL</h1>
-    <a href="/todos">home</a>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${todo.title}"></h5>
+            <p class="card-text" th:text="${todo.content}"></p>
+            <p>
+                완료여부 :
+                <span th:if="${todo.completed}" class="badge bg-success">완료</span>
+                <span th:unless="${todo.completed}" class="badge bg-warning">진행중</span>
+            </p>
+        </div>
+    </div>
 
-<!--    <h2 th:text="${todo.getTitle()}"></h2>-->
-    <h2 th:text="${todo.title}"></h2>
-    <h4 th:text="${todo.content}"></h4>
-    <p th:text="${todo.completed ? '완료' : '미완료'}"></p>
-
-    <hr>
-    <a th:href="@{/todos/{id}/edit(id=${todo.id})}">edit</a>
-    <a th:href="@{/todos/{id}/delete(id=${todo.id})}">delete</a>
+    <a th:href="@{/todos/{id}/edit(id=${todo.id})}" class="btn btn-warning">edit</a>
+    <a th:href="@{/todos/{id}/delete(id=${todo.id})}" class="btn btn-danger">delete</a>
 </div>

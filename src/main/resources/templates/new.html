@@ -5,10 +5,11 @@
 >
 <div layout:fragment="content">
 
-    <h1>NEW</h1>
     <form action="/todos/create">
-        <input type="text" name="title">
-        <input type="text" name="content">
-        <input type="submit">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" id="title" class="form-control">
+        <label for="content" class="form-label">Content</label>
+        <input type="text" name="content" id="content" class="form-control">
+        <input type="submit" class="btn btn-primary">
     </form>
 </div>
