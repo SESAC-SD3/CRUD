@@ -69,8 +69,22 @@ public class TodoService {
         }
     }
 
+    public long getTotalCount() {
+        return todoRepository.findAll().size();
+    }
 
+    public long getCompletedCount() {
+        return todoRepository.findByCompleted(true).size();
+    }
 
+    public long getActiveCount() {
+        return todoRepository.findByCompleted(false).size();
+    }
+
+    public void deleteCompletedTodos() {
+//        todoRepository.findByCompleted(true);
+        todoRepository.deleteCompleted();
+    }
 
 
 

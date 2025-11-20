@@ -48,6 +48,12 @@ public class TodoRepository {
                 .toList();
     }
 
+    public void deleteCompleted() {
+        storage.entrySet().removeIf(
+                item -> item.getValue().isCompleted()
+        );
+    }
+
 }
 
 
