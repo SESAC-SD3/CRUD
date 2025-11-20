@@ -5,11 +5,11 @@
 >
 <div layout:fragment="content">
 
-    <form action="/todos" method="post">
+    <form action="/todos" method="post" th:object="${todo}">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" id="title" class="form-control">
+        <input id="title" class="form-control" th:field="*{title}">
         <label for="content" class="form-label">Content</label>
-        <input type="text" name="content" id="content" class="form-control">
+        <input id="content" class="form-control" th:field="*{content}">
         <input type="submit" class="btn btn-primary">
     </form>
 </div>
