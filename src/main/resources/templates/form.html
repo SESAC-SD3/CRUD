@@ -6,8 +6,9 @@
 
 <div layout:fragment="content">
 
+    <h1 th:text="${todo.id == null} ? 'new' : 'update'"></h1>
     <form
-            th:action="@{/todos/{id}/update(id=${todo.id})}"
+            th:action="${todo.id == null} ? '/todos' : @{/todos/{id}/update(id=${todo.id})}"
             method="post"
             th:object="${todo}"
     >
@@ -15,7 +16,7 @@
         <input id="title" class="form-control" th:field="*{title}">
         <label for="content" class="form-label"></label>
         <input id="content" class="form-control" th:field="*{content}">
-        <input type="checkbox" class="form-check-input" th:field="*{completed}">
+        <input th:if="${todo.id != null}" type="checkbox" class="form-check-input" th:field="*{completed}">
         <input type="submit" class="btn btn-primary">
     </form>
 </div>
