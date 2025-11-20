@@ -39,6 +39,13 @@
             <span th:text="${message}"></span>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
+        <div th:if="${error}"
+             class="alert alert-danger alert-dismissible fade show"
+             role="alert"
+        >
+            <span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
         <div layout:fragment="content">
 
         </div>

@@ -37,10 +37,15 @@ public class TodoController {
             @ModelAttribute TodoDto todo,
             RedirectAttributes redirectAttributes
     ){
-        todoService.createTodo(todo);
-        redirectAttributes.addFlashAttribute("message", "할 일이 생성되었습니다.");
+        try {
+            todoService.createTodo(todo);
+            redirectAttributes.addFlashAttribute("message", "할 일이 생성되었습니다.");
 
-        return "redirect:/todos";
+            return "redirect:/todos";
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/todos/new";
+        }
     }
 
     @GetMapping("/{id}")
