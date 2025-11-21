@@ -2,6 +2,7 @@ package com.example.todoapp.service;
 
 import com.example.todoapp.dto.TodoDto;
 import com.example.todoapp.entity.TodoEntity;
+import com.example.todoapp.exception.ResourceNotFoundException;
 import com.example.todoapp.repository.TodoRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ public class TodoService {
 
     private TodoEntity findEntityById(Long id) {
         return todoRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found : id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("not found : id " + id));
     }
 
     public TodoDto getTodoById(Long id) {

@@ -40,27 +40,17 @@ public class TodoController {
             @ModelAttribute TodoDto todo,
             RedirectAttributes redirectAttributes
     ){
-        try {
-            todoService.createTodo(todo);
-            redirectAttributes.addFlashAttribute("message", "할 일이 생성되었습니다.");
+        todoService.createTodo(todo);
+        redirectAttributes.addFlashAttribute("message", "할 일이 생성되었습니다.");
+        return "redirect:/todos";
 
-            return "redirect:/todos";
-        } catch (IllegalArgumentException e) {
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/todos/new";
-        }
     }
 
     @GetMapping("/{id}")
     public String detail(@PathVariable Long id, Model model) {
-        try {
-            TodoDto todo = todoService.getTodoById(id);
-            model.addAttribute("todo", todo);
-            return "detail";
-
-        } catch (IllegalArgumentException e) {
-            return "redirect:/todos";
-        }
+        TodoDto todo = todoService.getTodoById(id);
+        model.addAttribute("todo", todo);
+        return "detail";
     }
 
     @GetMapping("/{id}/delete")
@@ -76,13 +66,10 @@ public class TodoController {
 
     @GetMapping("/{id}/update")
     public String edit(@PathVariable Long id, Model model) {
-        try {
-            TodoDto todo = todoService.getTodoById(id);
-            model.addAttribute("todo", todo);
-            return "form";
-        } catch (IllegalArgumentException e) {
-            return "redirect:/todos";
-        }
+        TodoDto todo = todoService.getTodoById(id);
+        model.addAttribute("todo", todo);
+        return "form";
+
     }
 
     @PostMapping("/{id}/update")
@@ -91,20 +78,10 @@ public class TodoController {
             @ModelAttribute TodoDto todo,
             RedirectAttributes redirectAttributes
     ){
-        try {
-            todoService.updateTodoById(id, todo);
-            redirectAttributes.addFlashAttribute("message", "할 일이 수정되었습니다.");
-            return "redirect:/todos/" + id;
-        } catch (IllegalArgumentException e) {
-            if (e.getMessage().contains("제목")) {
-                redirectAttributes.addFlashAttribute("error", e.getMessage());
-                return "redirect:/todos/" + id +"/update";
-            } else {
-                redirectAttributes.addFlashAttribute("message", "없는 할일입니다.");
-                return "redirect:/todos";
-            }
+        todoService.updateTodoById(id, todo);
+        redirectAttributes.addFlashAttribute("message", "할 일이 수정되었습니다.");
+        return "redirect:/todos/" + id;
 
-        }
     }
 
     @GetMapping("/search")
@@ -130,13 +107,8 @@ public class TodoController {
 
     @GetMapping("/{id}/toggle")
     public String toggle(@PathVariable Long id) {
-        try {
-            todoService.toggleCompleted(id);
-            return "redirect:/todos/" + id;
-
-        } catch (IllegalArgumentException e) {
-            return "redirect:/todos";
-        }
+        todoService.toggleCompleted(id);
+        return "redirect:/todos/" + id;
     }
 
     // 1. 제목 검증 추가

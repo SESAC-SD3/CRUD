@@ -33,20 +33,15 @@
 
     <div class="container">
         <div th:if="${message}"
-             th:classappend="${status == 'delete' ? 'alert-danger': 'alert-primary' }"
+             th:classappend="${status == 'error' ? 'alert-danger' :
+                               status == 'warning' ? 'alert-warning' : 'alert-primary'}"
              class="alert alert-dismissible fade show"
              role="alert"
         >
             <span th:text="${message}"></span>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
-        <div th:if="${error}"
-             class="alert alert-danger alert-dismissible fade show"
-             role="alert"
-        >
-            <span th:text="${error}"></span>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
+
         <div layout:fragment="content">
 
         </div>
